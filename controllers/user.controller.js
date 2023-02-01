@@ -60,7 +60,7 @@ exports.signin = async(req, res) =>
             console.log(" **** This email is not available. Please register first **** ", err.message);
             return res.status(400).send
             ({
-                message : "Internal server error. This email is not available. Please register first"
+                message : "This email is not available. Please register first"
             });
         }
         const isValidPassword = bcrypt.compareSync(req.body.Password, user.Password);
@@ -86,6 +86,8 @@ exports.signin = async(req, res) =>
             accessToken : token
         });
     }
+    
+    
     catch(err)
     {
         console.log(" **** Error while user sigin **** ")
