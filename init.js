@@ -38,7 +38,6 @@ module.exports = async () =>
     }
     else
     {
-        console.log("here")
         var adminData = 
             [{
                 Name : process.env.name,
@@ -49,7 +48,8 @@ module.exports = async () =>
                 Contact_No : process.env.contact_no,
                 Date_Of_Birth : process.env.DOB,
                 Usertype : process.env.admin,
-                username : process.env.us_name
+                username : process.env.us_name,
+                Security_Answer : process.env.SecurityAnswer
             }]
         db.user.bulkCreate(adminData).then(() =>
         {

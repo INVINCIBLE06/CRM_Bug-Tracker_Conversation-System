@@ -1,3 +1,6 @@
+const constants = require("../utils/constants");
+
+
 module.exports = (sequelize, Sequelize) => 
 {
     const Ticket = sequelize.define('ticket',
@@ -10,8 +13,8 @@ module.exports = (sequelize, Sequelize) =>
         ticket_priority :
         {
             type : Sequelize.ENUM,
-            defaultValue : process.env.open,
-            values : [process.env.open, process.env.closed, process.env.resolved, process.env.working, process.env.normal]
+            defaultValue : constants.ticketPriority.normal,
+            values : [constants.ticketPriority.normal, constants.ticketPriority.urgent]
         },
         title :
         {
@@ -27,8 +30,8 @@ module.exports = (sequelize, Sequelize) =>
         {
             type : Sequelize.ENUM,
             required : true,
-            defaultValue : process.env.open,
-            values : [process.env.open, process.env.blocked, process.env.closed]
+            defaultValue : constants.ticketStatus.open,
+            values : [constants.ticketStatus.open, constants.ticketStatus.closed,constants.ticketStatus.pending,constants.ticketStatus.working, constants.ticketStatus.resolved]
         },
         reporter : {
             type : Sequelize.STRING,
@@ -40,13 +43,13 @@ module.exports = (sequelize, Sequelize) =>
         },
         created_on :
         {
-            type : Sequelize.DATEONLY,
+            type : Sequelize.DATE,
             immutable : true,
             defaultValue : () => {return Date.now()} 
         },
         updated_on :
         {
-            type : Sequelize.DATEONLY,
+            type : Sequelize.DATE,
             defaultValue : () => { return Date.now() }
         },
     },

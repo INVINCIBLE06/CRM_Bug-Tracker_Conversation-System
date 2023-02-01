@@ -1,7 +1,10 @@
 const db = require('../models');
 const bcrypt = require("bcryptjs");
 require('dotenv').config();
-const User = db.user
+const User = db.user;
+const Role = db.role;
+const jwt = require('jsonwebtoken');
+const config = require('../configs/auth.config');
 
 exports.signup = async(req, res) => 
 {
@@ -38,7 +41,7 @@ exports.signup = async(req, res) =>
     }
     catch(err)
     {
-        console.log("****Error while user signup****", err.message);
+        console.log(" **** Error while user signup **** ", err.message);
         res.status(500).send
         ({
             message : "Internal server error while creating user"
@@ -55,7 +58,7 @@ exports.signin = async(req, res) =>
         if(!user)
         {
             console.log(" **** This email is not available. Please register first **** ", err.message);
-            res.status(400).send
+            return res.status(400).send
             ({
                 message : "Internal server error. This email is not available. Please register first"
             });
@@ -64,16 +67,24 @@ exports.signin = async(req, res) =>
         if(!isValidPassword)
         {
             console.log(" **** You have entered wrong password. ****", err.message)
-            res.status(400).send
+            return res.status(400).send
             ({
-                message : "Internal server error. Password is not correct."
+                message : "Password is not correct."
             });
         }
-        else
-        {
-            console.log(" **** User Logged in Successfully **** ");
-            res.status(200).send({user});
-        }
+        
+        var token = jwt.sign({id : user.id}, config.secret,{
+            expiresIn : 86400 // 24 hours
+        });
+
+        console.log(" **** User Logged in Successfully **** ");
+        return res.status(200).send
+        ({
+            id : user.id,
+            username : user.username,
+            Email : user.Email,
+            accessToken : token
+        });
     }
     catch(err)
     {

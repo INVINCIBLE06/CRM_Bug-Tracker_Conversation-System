@@ -1,7 +1,5 @@
 const db = require("../models");
 User = db.user;
-const bcrypt = require("bcryptjs");
-const { user } = require("../models");
 
 IsValidDateOfBirth = (DOB) => 
 {
@@ -85,7 +83,7 @@ const ValueEnteredCheck = (req, res) =>
         }
         else
         {
-            next
+            next();
         }
     }
     catch(err)

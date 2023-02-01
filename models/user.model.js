@@ -1,3 +1,5 @@
+const constants = require('../utils/constants');
+
 require('dotenv').config();
 
 module.exports = (sequelize, Sequelize) => 
@@ -44,19 +46,19 @@ module.exports = (sequelize, Sequelize) =>
         Security_Question :
         {
             type : Sequelize.STRING,
-            defaultValue : process.env.SecurityQuestion,
+            defaultValue : constants.Squestion,
             allowNull : false
         },
         Security_Answer :
         {
             type : Sequelize.STRING,
-            defaultValue : process.env.SecurityAnswer,
+            /// defaultValue : process.env.SecurityAnswer,
             allowNull : false
         },
         Usertype : 
         {
-            type : Sequelize.ENUM,
-            values : [process.env.engineer, process.env.admin, process.env.customer],
+            type : Sequelize.STRING,
+            // / values : [process.env.engineer, process.env.admin, process.env.customer],
             required : true,
             allowNull : false
         },
@@ -64,7 +66,7 @@ module.exports = (sequelize, Sequelize) =>
         {
             type : Sequelize.ENUM,
             // defaultValue : process.env.approved,
-            values : [process.env.approved, process.env.rejected, process.env.pending],
+            values : [constants.userStatus.approved, constants.userStatus.rejected, constants.userStatus.pending, constants.userStatus.blocked],
             allowNull : false
         },
         Password : 
@@ -98,7 +100,16 @@ module.exports = (sequelize, Sequelize) =>
             //                         return Date.now();
             //                     }
         },
-    },
+        // role_id :
+        // {
+        //     type : Sequelize.INTEGER,
+        //     attributes :[],
+        //     values :
+        //     {
+                
+        //     }
+        // }
+    },    
     {
         timestamps : false
     });
