@@ -28,16 +28,18 @@ const sequelize = new Sequelize(
 const db = {Sequelize,sequelize};
 // db.Sequelize = Sequelize;
 /// db.sequelize = sequelize;
+
 db.user = require('./user.model.js')(sequelize, Sequelize);
 db.ticket = require('./ticket.model.js')(sequelize, Sequelize);
-db.role = require('./role.model.js')(sequelize, Sequelize);
+db.role = require('./role.model')(sequelize, Sequelize);
+db.email_verified = require('./emailVerified.model')(sequelize, Sequelize);
 
-
-db.user.belongsToMany(db.role,{
-    through : "user_roles",
-    foreignKey : "roleId",
-    otherKey : "userId"
-});
+db.user.belongsToMany(db.role,
+    {
+        through : "user_roles",
+        foreignKey : "roleId",
+        otherKey : "userId"
+    });
 
 db.role.belongsToMany(db.user,{
         through : "user_roles",

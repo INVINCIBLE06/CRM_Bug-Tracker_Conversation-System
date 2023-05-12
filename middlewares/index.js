@@ -1,5 +1,6 @@
 const validator = require('./validator');
 
-module.exports = {
+module.exports = 
+{
     validator
 }

@@ -49,7 +49,7 @@ module.exports = async () =>
                 Date_Of_Birth : process.env.DOB,
                 Usertype : process.env.admin,
                 username : process.env.us_name,
-                Security_Answer : process.env.SecurityAnswer
+                // Security_Answer : process.env.SecurityAnswer
             }]
         db.user.bulkCreate(adminData).then(() =>
         {

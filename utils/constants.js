@@ -1,9 +1,21 @@
 module.exports = 
 {
+    status :
+    {
+        active : "ACTIVE",
+        inactive : "INACTIVE"
+    },
+
+    email_status :
+    {
+        verified : "VERIFIED",
+        not_verified : "NOT VERIFIED"
+    },
+
     userStatus :
     {
-        approved : "APPROVED",
         pending : "PENDING",
+        approved : "APPROVED",
         rejected : "REJECTED",
         blocked : "BLOCKED"
     },
@@ -30,6 +42,7 @@ module.exports =
         yes : "YES",
         no : "NO"
     }
+
 
 
 

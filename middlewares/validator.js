@@ -91,15 +91,12 @@ const ValueEnteredCheck = (req, res) =>
         console.log(" **** Error while checking the value entered function ****");
         res.status(500).send({ message : "Internal Server error while checking the value entered"});
     }
-
 };
 
 const ValidateSignUpRequestBody = async (req, res, next) =>
 {
-
     try
-    {
-        
+    {        
         if(IsValidEmail(req.body.Email))
         {
             return res.status(400).send
@@ -147,11 +144,10 @@ const ValidateSignUpRequestBody = async (req, res, next) =>
     {
         console.log(" **** Error while validation user signup attributes like date of birth, password, contact number, confirm password, and email ****", err.message);
         res.status(500).send
-            ({
-                message : "Internal server error while validation user signup attributes like date of birth, password, contact number, confirm password, and email"
-            });
+        ({
+            message : "Internal server error while validation user signup attributes like date of birth, password, contact number, confirm password, and email"
+        });
     }
-
 };
 
 
@@ -159,7 +155,7 @@ const DuplicateValueCheck = async(req, res) =>
 {
     try
     {
-        const user = await User.findOne ({ where : { username : req.body.username }});
+        const user = await User.findOne({ where : { username : req.body.username }});
         if(!user)
         {
             console.log("### username is not available. Please check some other ###");
@@ -168,7 +164,7 @@ const DuplicateValueCheck = async(req, res) =>
                 message : " Internal server error username is not available. Please check some other"
             });
         }
-        const user2 = await User.findOne ({ where : { Email : req.body.Email }});
+        const user2 = await User.findOne({ where : { Email : req.body.Email }});
         if(!user2)
         {
             console.log(" ### Email id is already registered someone else. Please enter some other email for signup ###");

@@ -18,70 +18,70 @@ module.exports = (sequelize, Sequelize) =>
             required : true,
             allowNull : false
         },
-        Name :
+        name :
         {
             type : Sequelize.STRING,
             required : true,
             allowNull : false
             
         },
-        Email :
+        email :
         {
             type : Sequelize.STRING,
             required : true,
             allowNull : false
         },
-        Contact_No :
+        contact_no :
         {
             type : Sequelize.STRING,
             required : true,
             allowNull : false
         },
-        Date_Of_Birth : 
+        date_of_birth : 
         {
             type : Sequelize.STRING,
             required : true,
             allowNull : false
         },
-        Security_Question :
-        {
-            type : Sequelize.STRING,
-            defaultValue : constants.Squestion,
-            allowNull : false
-        },
-        Security_Answer :
-        {
-            type : Sequelize.STRING,
-            /// defaultValue : process.env.SecurityAnswer,
-            allowNull : false
-        },
-        Usertype : 
+        // security_question :
+        // {
+        //     type : Sequelize.STRING,
+        //     defaultValue : constants.Squestion,
+        //     allowNull : false
+        // },
+        // security_answer :
+        // {
+        //     type : Sequelize.STRING,
+        //     /// defaultValue : process.env.SecurityAnswer,
+        //     allowNull : false
+        // },
+        usertype : 
         {
             type : Sequelize.STRING,
             // / values : [process.env.engineer, process.env.admin, process.env.customer],
             required : true,
             allowNull : false
         },
-        Userstatus :
+        userstatus :
         {
             type : Sequelize.ENUM,
             // defaultValue : process.env.approved,
             values : [constants.userStatus.approved, constants.userStatus.rejected, constants.userStatus.pending, constants.userStatus.blocked],
             allowNull : false
         },
-        Password : 
+        password : 
         {
             type : Sequelize.STRING,
             required : true,
             allowNull : false
         },
-        Confirm_Password : 
+        confirm_password : 
         {
             type : Sequelize.STRING,
             required : true,
             allowNull : false
         },
-        Created_on :
+        created_on :
         {
             type : Sequelize.DATE,
             defaultValue: Sequelize.NOW,
@@ -91,7 +91,7 @@ module.exports = (sequelize, Sequelize) =>
             //                         return Date.now();
             //                     } 
         },
-        Updated_on :
+        updated_on :
         {
             type : Sequelize.DATE,
             defaultValue: Sequelize.NOW

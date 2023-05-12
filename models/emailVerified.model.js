@@ -2,7 +2,7 @@ const constants = require("../utils/constants");
 
 module.exports = (sequelize, Sequelize) => 
 {
-    const Role = sequelize.define("roles",
+    const Email_Verified = sequelize.define("email_verified",
     {
         id : 
         {
@@ -10,22 +10,24 @@ module.exports = (sequelize, Sequelize) =>
             primaryKey : true,
             autoIncrement : true
         },
-        name : 
+        email :
         {
             type : Sequelize.STRING,
+            unique : true,
             allowNull : false
         },
-        status :
+        email_verified :
         {
-            type : Sequelize.ENUM(constants.status.active, constants.status.inactive)
+            type : Sequelize.ENUM(constants.email_status.verified,  constants.email_status.not_verified),
+            allowNull : false
         },
-        created_on :
+        email_entered_at :
         {
             type : Sequelize.DATE,
             immutable : true,
             defaultValue : () => { return Date.now() } 
         },
-        updated_on :
+        email_verified_at :
         {
             type : Sequelize.DATE,
             defaultValue : () => { return Date.now() }
@@ -33,6 +35,6 @@ module.exports = (sequelize, Sequelize) =>
     },
     {
         timestamps: false,
-    });
-    return Role;
+    });    
+    return Email_Verified;
 };
