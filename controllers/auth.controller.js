@@ -20,10 +20,10 @@ exports.signup = async(req, res) =>
         Password : bcrypt.hashSync(req.body.Password, 8),
         Confirm_Password : bcrypt.hashSync(req.body.Confirm_Password, 8)
     };
+    
     try
     {
         const userCreated = await User.create(userObj);
-
         const response = 
         {
             Name : userCreated.Name,

@@ -35,8 +35,6 @@ module.exports =
         urgent : "URGENT"
     },
 
-    Squestion : "Who is your childhood hero",
-
     granted :
     {
         yes : "YES",

@@ -181,8 +181,7 @@ const DuplicateValueCheck = async(req, res) =>
             ({
                 message : " Internal server error someone already having this contact number. Please check once again"
             });  
-        }
-         
+        }         
     }
     catch(err)
     {
@@ -191,11 +190,11 @@ const DuplicateValueCheck = async(req, res) =>
             message : "Internal servor error whil checking the duplicte values"
         })
     }
-
 };
 
 
-const validator = {
+const validator = 
+{
     DuplicateValueCheck,
     ValidateSignUpRequestBody,
     ValueEnteredCheck
